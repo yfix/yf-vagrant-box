@@ -397,32 +397,6 @@ if (( $EUID == 0 )); then
     npm() { sudo -EH -u vagrant -- npm "$@"; }
 fi
 
-if [[ $ping_result == "Connected" ]]; then
-
-	# Install and configure the latest stable version of WordPress
-#	if [[ ! -d /srv/www/wordpress-default ]]; then
-#		echo "Downloading WordPress Stable, see http://wordpress.org/"
-#		cd /srv/www/
-#		curl -L -O https://wordpress.org/latest.tar.gz
-#		tar -xvf latest.tar.gz
-#		mv wordpress wordpress-default
-#		rm latest.tar.gz
-#		cd /srv/www/wordpress-default
-#		echo "Configuring WordPress Stable..."
-#		wp core config --dbname=wordpress_default --dbuser=wp --dbpass=wp --quiet --extra-php <<PHP
-#define( 'WP_DEBUG', true );
-#PHP
-#		echo "Installing WordPress Stable..."
-#		wp core install --url=local.wordpress.dev --quiet --title="Local WordPress Dev" --admin_name=admin --admin_email="admin@local.dev" --admin_password="password"
-#	else
-#		echo "Updating WordPress Stable..."
-#		cd /srv/www/wordpress-default
-#		wp core upgrade
-#	fi
-else
-	echo -e "\nNo network available, skipping network installations"
-fi
-
 # Find new sites to setup.
 # Kill previously symlinked Nginx configs
 # We can't know what sites have been removed, so we have to remove all
